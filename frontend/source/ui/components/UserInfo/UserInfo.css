@@ -1,0 +1,13 @@
+.user-info {
+  justify-content: flex-end;
+  padding-right: 1.5rem;
+}
+
+.user-info--image {
+  height: 4rem;
+  border-radius: 100%;
+}
+
+.user-info--exit {
+  cursor: pointer;
+}

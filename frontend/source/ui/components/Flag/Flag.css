@@ -1,0 +1,5 @@
+/* Overriding Material-UI */
+.flag--description {
+  min-width: 15rem !important;
+  margin: 0 1rem 0 0 !important;
+}

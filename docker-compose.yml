@@ -1,0 +1,60 @@
+version: "3.7"
+
+services:
+  feature-flag-database:
+    build: ./database
+    container_name: "feature-flag-database"
+    restart: always
+    volumes:
+      - ./database/data:/var/lib/postgresql/data
+      - ./database/dumps:/var/lib/postgresql/db/dumps/
+    ports:
+      - "9997:5432"
+
+  feature-flag-api:
+    build: "./backend"
+    container_name: "feature-flag-api"
+    restart: always
+    command: bash -c "printf '\nSleeping waiting for the database to start... \n\n' && sleep 10 && printf '\nDone sleeping... \n\n' &&
+      printf '\nMaking migrations... \n\n' &&
+      python /service/manage.py makemigrations &&
+      printf '\nMerging migrations... \n\n' &&
+      python /service/manage.py makemigrations --merge &&
+      printf '\nMigrating... \n\n' &&
+      python /service/manage.py migrate &&
+      printf '\nLets party... \n\n' &&
+      python /service/manage.py runserver 0.0.0.0:9999"
+    volumes:
+      - ./backend:/service
+    ports:
+      - 9999:9999
+    depends_on:
+      - feature-flag-database
+    environment:
+      SERVICE_NAME: "Feature Flags"
+      POSTGRES_HOST: "feature-flag-database"
+      POSTGRES_DB: "featureflags"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: ""
+      POSTGRES_PORT: "5432"
+    links:
+      - feature-flag-database
+
+  feature-flag-dashboard:
+    build: "./frontend"
+    container_name: "feature-flag-dashboard"
+    volumes:
+      - ./frontend/source:/feature-flag-dashboard/source
+      - ./frontend/package.json:/feature-flag-dashboard/package.json
+      - ./frontend/package-lock.json:/feature-flag-dashboard/package-lock.json
+    environment:
+      PORT: "9998"
+    ports:
+      - "9998:9998"
+    depends_on:
+      - feature-flag-api
+
+volumes:
+  feature-flag-api:
+  feature-flag-dashboard:
+  feature-flag-database: {}

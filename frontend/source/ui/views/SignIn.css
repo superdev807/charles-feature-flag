@@ -1,0 +1,24 @@
+.sign-in--button {
+  margin: 1rem !important;
+  color: white !important;
+}
+
+.sign-in--input {
+  margin: 1rem 0 !important;
+  font-size: 1.5rem !important;
+}
+
+.sign-in--input input {
+  padding: 1rem 0.5rem !important;
+}
+
+.sign-in--input input:-webkit-autofill,
+.sign-in--input input:-webkit-autofill:hover,
+.sign-in--input input:-webkit-autofill:focus,
+.sign-in--input input:-webkit-autofill:active  {
+    box-shadow: 0 0 0 30px white inset !important;
+}
+
+.sign-in--no-bg {
+  background: none !important;
+}

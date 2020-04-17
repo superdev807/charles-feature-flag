@@ -1,0 +1,10 @@
+backend/.idea
+backend/bin/
+backend/include/
+backend/lib/
+database/data/
+frontend/node_modules/
+.history
+.DS_Store
+.idea/
+database/.DS_Store

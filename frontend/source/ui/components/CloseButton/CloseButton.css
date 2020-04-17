@@ -1,0 +1,14 @@
+/* Overriding Material-UI is gross */
+.close-button {
+  outline: none !important;
+  cursor: pointer !important;
+  padding: 0.5rem !important;
+  align-items: center !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-radius: 100% !important;
+  display: flex !important;
+  font-size: 1.5rem !important;
+  justify-content: center !important;
+  transform: scale(0.6);
+}

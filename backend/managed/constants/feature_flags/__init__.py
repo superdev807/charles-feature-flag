@@ -1,0 +1,8 @@
+DELIVERY_MVP = 'delivery-mvp'
+WEEKLY_ANALYTICS_EMAIL = 'weekly-analytics-email'
+MULTI_CLIENT_ORDERING = 'multi-client-ordering'
+BRAND_NEW_PRODUCT_QUEUE = 'brand-new-product-queue'
+ADDITIONAL_STORE_INFO = 'additional-store-info'
+QUEUE_KLICKTRACK = 'queue-klicktrack'
+NEW_CRONS = 'new-crons'
+SCHEDULED_JOB_IN_CURRENT_QUEUE = 'scheduled-job-in-queue'
